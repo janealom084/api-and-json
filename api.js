@@ -7,7 +7,7 @@ function loadData() {
 function userData() {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(Response => Response.json())
-        .then(data => console.log(data))
+        .then(data => displyUsers(data))
 }
 
 function loadPost() {
@@ -20,3 +20,15 @@ function loadPotos() {
         .then(Response => Response.json())
         .then(potos => console.log(potos))
 }
+
+function displyUsers(data) {
+    const ul = document.getElementById('usersName');
+    for (const user of data) {
+        console.log(user)
+        const li = document.createElement('li');
+        li.innerText = `Name: ${user.name} Email: ${user.email}`;
+        ul.appendChild(li);
+
+    }
+}
+
